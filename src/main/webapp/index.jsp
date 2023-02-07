@@ -1,73 +1,76 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
+<%@page import="dao.BookDAO"%>
+<%@page import="model.Book"%>
+<%@page import="model.Cart"%>
+
+<%@page import="java.util.*"%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Your Forms</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/style.css">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<%@include file="/includes/head.jsp"%>
 </head>
+<%
+BookDAO bk = new BookDAO();
+List<Book> books = bk.view();
+System.out.println("from jsp page: "+books);
+ArrayList<Cart> cart_list = (ArrayList<Cart>) session.getAttribute("cart-list");
+if (cart_list != null) {
+	request.setAttribute("cart_list", cart_list);}
+%>
+
 <body>
-    
-   <div class="registration-form">
-        <form  action="RegisterServlet"  method="post" >
-            <div class="form-icon">
-                <span><i class="icon icon-user"></i></span>
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control item" name="firstName" placeholder="First name" required>
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control item" name="lastName" placeholder="Last name" required>
-            </div>
+	<div class="container">
+		<div class="card-header my-3">All Books</div>
+		<div class="row">
+			<%
+			if (!books.isEmpty()) {
+				for (Book b : books) {
+            System.out.println("from jsp page: "+b.getName());
+			%>
+			<div class="col-md-3 my-3">
+				<div class="card w-100">
+					<div class="card-body">
+						<h5 class="card-title"><%=b.getName()%></h5>
+						<h6 class="price">
+							Title<%=b.getTitle()%></h6>
+						<h6 class="category">
+							Category:
+							<%=b.getPublisher()%></h6>
+							<h6 class="category">
+							Category:
+							<%=b.getQuantity()%></h6>
+						<div class="mt-3 d-flex justify-content-between">
+						<form action="AddToCart"  method="post">
+						
             
-            <div class="form-group">
-                <input type="text" class="form-control item" name="email" placeholder="Email" required>
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control item" name="phone-number" placeholder="Phone Number" required>
-            </div>
-            <div class="form-group">
-                <input type="text" class="form-control item" name="roll-number" placeholder="Roll-number" required>
-            </div>
+                         <input type="hidden"   name="book_id" value=<%=b.getId()%>>
+                                   
+							<button  type="submit" class="btn btn-dark" >Add to Cart</button>
+						</form>
+						
+							
+							 <a
+								class="btn btn-primary" >Read More</a>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<%
+			}
+			} else {
+			out.println("There is no Book");
+			}
+			%>
 
-            <div class="form-group form-control item">
-                <label for="gender">Choose your Gender:</label>
-                <input type="radio" name="gender" value="male"> Male
-                   <input type="radio" name="gender" value="female"> Female
-                   <input type="radio" name="gender" value="others"> others
-            </div>
+		</div>
+	</div>
 
-            <div class="form-group form-control item" name="lastAdd" required>
-                <label for="course">Choose a course:</label>
-
-                   <select name="course" id="course" required>
-                    <option value="defult">Select a course</option>
-                      <option value="B.Tech">B.Tech</option>
-                      <option value="M.Tech">M.Tech</option>
-                      <option value="Diploma">Diploma</option>
-                      <option value="MBA">MBA</option>
-                    </select>
-            </div>
-            <div class="form-group">
-                <input type="password" class="form-control item" name="password" placeholder="Password" required>
-            </div>
-            <div class="form-group">
-                <button type="submit" class="btn btn-block create-account">Create Account</button>
-            </div>
-            <div>
-            <p> Already have an account? <a href ="login.jsp">Login hear</a></p>
-            	
-            </div>
-           
-        </form>
-      
-    </div>
-   
+<%@include file="/includes/footer_js.jsp"%>
 </body>
-</html>
 </html>

@@ -41,7 +41,7 @@ String userName = (String) session.getAttribute("userName");
       <div class="collapse navbar-collapse text-dec" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" href="home.jsp">Home</a>
           </li>
           <li class="nav-item">
             <a class="nav-link active" href="/">About us</a>
@@ -81,12 +81,14 @@ String userName = (String) session.getAttribute("userName");
         <div class="mx-3">
 
 		<%
-		if(userName != null){
+		if(userName != null && userName!="") {
 			%>
 			<div class="d-flex flex-row space justify-content-between" style="width: 200px;">
 		<p> <%= userName.split("@")[0] %></p>
 		<form>
-		<button class="btn btn-secondary" ><a href ="Logout">Logout</a></button>
+		<button class="btn btn-secondary" >
+		<a href ="Logout">Logout</a>
+		</button>
 		</form>
 		</div>
 		<%
@@ -104,7 +106,7 @@ String userName = (String) session.getAttribute("userName");
              
                  <li><a href="login.jsp"> <button class="dropdown-item" type="button" >Login</button></a></li>
              
-                <li><a href ="admin.jsp"><button class="dropdown-item" type="button" >Admin Login</button></a></li>
+                <li><a href ="adminLogin.jsp"><button class="dropdown-item" type="button" >Admin Login</button></a></li>
              
              
             </ul>

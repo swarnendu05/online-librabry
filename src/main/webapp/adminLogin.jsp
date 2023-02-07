@@ -19,6 +19,7 @@
 </head>
 <body>
 <body>
+<jsp:include page="nevber.jsp" />
 	<%!
 	Student st = new Student();%>
 
@@ -38,7 +39,7 @@
 						%>
 
 						<form id="login-form" class="form" action="AdminLog" method="post">
-							<h3 class="text-center text-info">Login</h3>
+							<h3 class="text-center text-info">Admin Login</h3>
 
 							<div class="form-group">
 								<label for="username" class="text-info">UserName:</label><br>

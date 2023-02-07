@@ -10,10 +10,23 @@
  <servlet-name>RegisterServlet</servlet-name>
  <servlet-class>controller.StudentReg</servlet-class>
  </servlet>
+  <servlet>
+ <description></description>
+ <display-name>AddToCart</display-name>
+ <servlet-name>AddToCart</servlet-name>
+ <servlet-class>controller.AddToCart</servlet-class>
+ </servlet>
  <servlet-mapping>
  <servlet-name>RegisterServlet</servlet-name>
  <url-pattern>/registerServlet</url-pattern>
  </servlet-mapping>
+ 
+ 
+ 
+ <servlet-mapping>
+    <servlet-name>AddToCart</servlet-name>
+    <url-pattern>/addToCart</url-pattern>
+</servlet-mapping>
  
   <servlet>
  <description></description>

@@ -50,14 +50,12 @@
 									class="form-control">
 							</div>
 							<div class="form-group">
-								<label for="remember-me" class="text-info"><span>Remember
-										me</span> <span><input id="remember-me" name="remember-me"
-										type="checkbox"></span></label><br> <input type="submit"
+								 <input type="submit"
 									name="submit" class="btn btn-info btn-md" value="submit">
 							</div>
 
 							<div id="register-link" class="text-right">
-								<a href="#" class="text-info">Register here</a>
+								<a href="inden.jsp" class="text-info">Register here</a>
 							</div>
 
 
